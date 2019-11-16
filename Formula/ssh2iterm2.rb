@@ -2,16 +2,40 @@
 class Ssh2iterm2 < Formula
   desc "Create iTerm2 dynamic profile from SSH config"
   homepage "https://github.com/arnested/ssh2iterm2"
-  version "0.8.0"
+  version "0.9.0"
   bottle :unneeded
 
   if OS.mac?
-    url "https://github.com/arnested/ssh2iterm2/releases/download/v0.8.0/ssh2iterm2_0.8.0_darwin_amd64.tar.gz"
-    sha256 "edf28738f61822dbf8975f9cb8e52381388d28b5286411d8c03762f4555eb0f5"
+    url "https://github.com/arnested/ssh2iterm2/releases/download/v0.9.0/ssh2iterm2_0.9.0_darwin_amd64.tar.gz"
+    sha256 "9c6d923960aa04314f7d7bdfc1bc3089de96d1a4350164f677bb9b873e8fd6e4"
   elsif OS.linux?
   end
 
   def install
     bin.install "ssh2iterm2"
+  end
+
+  plist_options :startup => false
+
+  def plist; <<~EOS
+    <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>#{plist_name}</string>
+    <key>ProgramArguments</key>
+    <array>
+      <string>#{opt_bin}/ssh2iterm2</string>
+      <string>watch</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+  </dict>
+</plist>
+
+  EOS
   end
 end
