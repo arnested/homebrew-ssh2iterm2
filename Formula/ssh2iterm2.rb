@@ -5,12 +5,12 @@
 class Ssh2iterm2 < Formula
   desc "Create iTerm2 dynamic profile from SSH config"
   homepage "https://github.com/arnested/ssh2iterm2"
-  version "1.0.43"
+  version "1.0.44"
   depends_on :macos
 
   on_macos do
-    url "https://github.com/arnested/ssh2iterm2/releases/download/v1.0.43/ssh2iterm2_1.0.43_darwin_amd64.tar.gz"
-    sha256 "d292dc4cfb56fed20c866564a4e8609d0978803aa0e14c024096b522ac2449a6"
+    url "https://github.com/arnested/ssh2iterm2/releases/download/v1.0.44/ssh2iterm2_1.0.44_darwin_amd64.tar.gz"
+    sha256 "1befd2927952765e3c443d3febdf1ae4806b5c818267c5a8ed0f1de8b25ee4aa"
 
     def install
       bin.install "ssh2iterm2"
