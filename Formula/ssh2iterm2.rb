@@ -5,12 +5,12 @@
 class Ssh2iterm2 < Formula
   desc "Create iTerm2 dynamic profile from SSH config"
   homepage "https://github.com/arnested/ssh2iterm2"
-  version "1.0.56"
+  version "1.0.66"
   depends_on :macos
 
   on_macos do
-    url "https://github.com/arnested/ssh2iterm2/releases/download/v1.0.56/ssh2iterm2_1.0.56_darwin_amd64.tar.gz"
-    sha256 "342ce3c60e84678d0a73b08c1e74c1d98062c2eb2eff8dad4924572dc30b9062"
+    url "https://github.com/arnested/ssh2iterm2/releases/download/v1.0.66/ssh2iterm2_1.0.66_darwin_amd64.tar.gz"
+    sha256 "df79ae5d1158d3e9fbebcd9dd410476e3eb77891e411dbcc5514acc91217563d"
 
     def install
       bin.install "ssh2iterm2"
@@ -27,10 +27,11 @@ class Ssh2iterm2 < Formula
     end
   end
 
-  plist_options :startup => false
+  plist_options startup: false
 
-  def plist; <<~EOS
-    <?xml version="1.0" encoding="UTF-8"?>
+  def plist
+    <<~EOS
+      <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
   <dict>
@@ -48,6 +49,6 @@ class Ssh2iterm2 < Formula
   </dict>
 </plist>
 
-  EOS
+    EOS
   end
 end
