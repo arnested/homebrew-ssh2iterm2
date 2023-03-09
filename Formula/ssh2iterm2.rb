@@ -5,21 +5,21 @@
 class Ssh2iterm2 < Formula
   desc "Create iTerm2 dynamic profile from SSH config"
   homepage "https://github.com/arnested/ssh2iterm2"
-  version "1.0.89"
+  version "1.0.90"
   depends_on :macos
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/arnested/ssh2iterm2/releases/download/v1.0.89/ssh2iterm2_1.0.89_darwin_arm64.tar.gz"
-      sha256 "df95e5f804ffec95d90d3f28c7a5f82e7200c241375dc275e71808ab0d8c13b3"
+      url "https://github.com/arnested/ssh2iterm2/releases/download/v1.0.90/ssh2iterm2_1.0.90_darwin_arm64.tar.gz"
+      sha256 "8eb576330d8b38442cc29de475921acf50306d32c9c86e8a4f4f5c7f283d6b2b"
 
       def install
         bin.install "ssh2iterm2"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/arnested/ssh2iterm2/releases/download/v1.0.89/ssh2iterm2_1.0.89_darwin_amd64.tar.gz"
-      sha256 "2d1930aa8c03ddbd8c1e5ed7ce29d393d1cacce3c4765c03c07932d0f2915dc4"
+      url "https://github.com/arnested/ssh2iterm2/releases/download/v1.0.90/ssh2iterm2_1.0.90_darwin_amd64.tar.gz"
+      sha256 "6015fc2b9ebbe7b1d9c873da939ae965b749ff436c7e006f8d71be2cf0510c87"
 
       def install
         bin.install "ssh2iterm2"
@@ -27,28 +27,8 @@ class Ssh2iterm2 < Formula
     end
   end
 
-  plist_options startup: false
-
-  def plist
-    <<~EOS
-      <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-  <dict>
-    <key>Label</key>
-    <string>#{plist_name}</string>
-    <key>ProgramArguments</key>
-    <array>
-      <string>#{opt_bin}/ssh2iterm2</string>
-      <string>watch</string>
-    </array>
-    <key>RunAtLoad</key>
-    <true/>
-    <key>KeepAlive</key>
-    <true/>
-  </dict>
-</plist>
-
-    EOS
+  service do
+    run [opt_bin/"ssh2iterm2", "watch"]
+    keep_alive true
   end
 end
