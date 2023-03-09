@@ -5,24 +5,24 @@
 class Ssh2iterm2 < Formula
   desc "Create iTerm2 dynamic profile from SSH config"
   homepage "https://github.com/arnested/ssh2iterm2"
-  version "1.0.88"
+  version "1.0.89"
   depends_on :macos
 
   on_macos do
-    url "https://github.com/arnested/ssh2iterm2/releases/download/v1.0.88/ssh2iterm2_1.0.88_darwin_amd64.tar.gz"
-    sha256 "18dd75056873dd0c1763393d7255b8867d374ceb63180e40b9f64f6e5df14576"
-
-    def install
-      bin.install "ssh2iterm2"
-    end
-
     if Hardware::CPU.arm?
-      def caveats
-        <<~EOS
-          The darwin_arm64 architecture is not supported for the Ssh2iterm2
-          formula at this time. The darwin_amd64 binary may work in compatibility
-          mode, but it might not be fully supported.
-        EOS
+      url "https://github.com/arnested/ssh2iterm2/releases/download/v1.0.89/ssh2iterm2_1.0.89_darwin_arm64.tar.gz"
+      sha256 "df95e5f804ffec95d90d3f28c7a5f82e7200c241375dc275e71808ab0d8c13b3"
+
+      def install
+        bin.install "ssh2iterm2"
+      end
+    end
+    if Hardware::CPU.intel?
+      url "https://github.com/arnested/ssh2iterm2/releases/download/v1.0.89/ssh2iterm2_1.0.89_darwin_amd64.tar.gz"
+      sha256 "2d1930aa8c03ddbd8c1e5ed7ce29d393d1cacce3c4765c03c07932d0f2915dc4"
+
+      def install
+        bin.install "ssh2iterm2"
       end
     end
   end
