@@ -5,21 +5,21 @@
 class Ssh2iterm2 < Formula
   desc "Create iTerm2 dynamic profile from SSH config"
   homepage "https://github.com/arnested/ssh2iterm2"
-  version "1.1.25"
+  version "1.1.26"
   depends_on :macos
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/arnested/ssh2iterm2/releases/download/v1.1.25/ssh2iterm2_1.1.25_darwin_arm64.tar.gz"
-      sha256 "74403224f431e392e1b2724876f74340c1d6802f224857bd15e04c6d2bf69ed0"
+      url "https://github.com/arnested/ssh2iterm2/releases/download/v1.1.26/ssh2iterm2_1.1.26_darwin_arm64.tar.gz"
+      sha256 "de56a4a2a80790f299c4ab9c523ffb06ac8d2e1da086be45dfb640f95b0a8b16"
 
       def install
         bin.install "ssh2iterm2"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/arnested/ssh2iterm2/releases/download/v1.1.25/ssh2iterm2_1.1.25_darwin_amd64.tar.gz"
-      sha256 "7953001ee6abaebd7290c003fea1a7fe1667b8c7c627db686b252de7c25cb926"
+      url "https://github.com/arnested/ssh2iterm2/releases/download/v1.1.26/ssh2iterm2_1.1.26_darwin_amd64.tar.gz"
+      sha256 "7921d24d17a038f27bba12659e6be9f0aa03bc9e66b5205e5068b7b3357c2f0b"
 
       def install
         bin.install "ssh2iterm2"
